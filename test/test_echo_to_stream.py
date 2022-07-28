@@ -4,12 +4,14 @@ from unittest.mock import MagicMock
 from django.core.mail import EmailMessage
 from django.test import override_settings
 from django.test.testcases import SimpleTestCase
+import pytest
 from python_http_client.exceptions import UnauthorizedError
 
 from sendgrid_backend.mail import SendgridBackend
 
 
 class TestEchoToOutput(SimpleTestCase):
+    @pytest.mark.filterwarnings("ignore:Sendgrid email backend is in sandbox mode!  Emails will not be delivered.")
     def test_echo(self):
         settings = {
             "DEBUG": True,

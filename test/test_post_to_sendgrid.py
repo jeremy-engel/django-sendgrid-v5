@@ -3,19 +3,18 @@ import os
 from django.core.mail import EmailMessage
 from django.test import override_settings
 from django.test.testcases import SimpleTestCase
-from nose.plugins.skip import SkipTest
+import pytest
 
 
 class TestPostToSendgrid(SimpleTestCase):
+    @pytest.mark.skipif(os.environ.get("SENDGRID_API_KEY") is None, reason="SENDGRID_API_KEY not set")
     def test_post(self):
         """
         Sends a POST to sendgrid's live API using a private API key that is stored
         in github.
         """
 
-        SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
-        if not SENDGRID_API_KEY:
-            raise SkipTest("SENDGRID_API_KEY not set")
+        SENDGRID_API_KEY = os.environ["SENDGRID_API_KEY"]
 
         # Set DEBUG=True so sandbox mode is enabled
         settings = {

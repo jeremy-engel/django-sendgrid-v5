@@ -1,12 +1,14 @@
 from django.core.mail import EmailMessage
 from django.test import override_settings
 from django.test.testcases import SimpleTestCase
+import pytest
 from sendgrid.helpers.mail import BypassListManagement, MailSettings
 
 from sendgrid_backend.mail import SendgridBackend
 
 
 class TestSandboxMode(SimpleTestCase):
+    @pytest.mark.filterwarnings("ignore:Sendgrid email backend is in sandbox mode!  Emails will not be delivered.")
     def test_sandbox_mode(self):
         """
         Tests combinations of DEBUG, SENDGRID_SANDBOX_MODE_IN_DEBUG, and mail_settings to ensure

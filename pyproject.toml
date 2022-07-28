@@ -1,3 +1,48 @@
+[tool.poetry]
+name = "django-sendgrid-v5"
+version = "1.2.1"
+description = "An implementation of Django's EmailBackend compatible with sendgrid-python v5+"
+homepage = "https://github.com/sklarsa/django-sendgrid-v5"
+license = "MIT"
+authors = ["Steven Sklar <sklarsa@gmail.com>"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+keywords = ["django", "email", "sendgrid", "backend"]
+packages = [
+    { include = "sendgrid_backend" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+django = ">=1.8"
+sendgrid = ">=5.0.0,<7.0"
+python-http-client = ">=3.0.0"
+
+[tool.poetry.dev-dependencies]
+black = "==22.3.0"
+codecov = "==2.1.10"
+coverage = "==4.4.1"
+flake8 = "==3.8.4"
+isort = "==5.7.0"
+jedi = "==0.10.2"
+mock = "==2.0.0"
+mypy = "==0.920"
+pytest = "^7.1.2"
+tox = "==3.8.5"
+twine = "==3.3.0"
+typed-ast = "==1.5.1"
+wheel = "*"
+
+[build-system]
+requires = ["poetry>=1.1.13"]
+build-backend = "poetry.masonry.api"
+
 [tool.black]
 multi_line_output = 3
 include_trailing_comma = true
